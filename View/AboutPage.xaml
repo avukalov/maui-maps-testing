@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:GoogleMaps.Model"
+             xmlns:viewmodel="clr-namespace:GoogleMaps.ViewModel"
+             x:Class="GoogleMaps.View.AboutPage"
+             x:DataType="viewmodel:AboutViewModel">
+
+    <ScrollView Padding="10">
+        <CollectionView 
+            ItemsSource="{Binding Icons}"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:FreepikIcon">
+                    <HorizontalStackLayout Padding="7" Spacing="10" >
+                        <Image 
+                            Source="{Binding Name}"
+                            WidthRequest="25"
+                            HeightRequest="25" />
+                        <Label 
+                            Text="{Binding Text}"
+                            Style="{StaticResource HyperLink}"
+                            VerticalOptions="Center">           
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AboutViewModel}}, Path=OpenUrlCommand}"
+                                    CommandParameter="{Binding Url}" />
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+    
+    
+    
+    <!--<VerticalStackLayout Padding="10" Spacing="10">
+        <HorizontalStackLayout Spacing="10">
+            <Image Source="map.png" WidthRequest="25" HeightRequest="25"/>
+            <Label 
+            Text="Icon by Smashicons"
+            TextColor="Blue"
+            TextDecorations="Underline"
+            VerticalOptions="Center">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenUrlCommand}"
+                                      CommandParameter="https://www.freepik.com/search?format=search%26last_filter=query%26last_value=map%26query=map%26type=icon" />
+                </Label.GestureRecognizers>
+
+            </Label>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10">
+            <Image Source="info.png" WidthRequest="25" HeightRequest="25"/>
+            <Label 
+            Text="Icon by Freepik"
+            TextColor="Blue"
+            TextDecorations="Underline"
+            VerticalOptions="Center">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenUrlCommand}"
+                                      CommandParameter="https://www.freepik.com/search?format=search%26last_filter=query%26last_value=about%26query=about%26type=icon" />
+                </Label.GestureRecognizers>
+
+            </Label>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>-->
+</ContentPage>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GoogleMaps"
+    xmlns:view="clr-namespace:GoogleMaps.View"
+    x:Class="GoogleMaps.AppShell"
+    FlyoutBehavior="Flyout">
+
+    <ShellContent
+        Title="Home"
+        Icon="home.png"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    
+    <ShellContent
+        Title="Map"
+        Icon="map.png"
+        ContentTemplate="{DataTemplate view:MapPage}"
+        Route="MapPage" />
+
+    <ShellContent
+        Title="About"
+        Icon="info.png"
+        ContentTemplate="{DataTemplate view:AboutPage}"
+        Route="AboutPage" />
+
+</Shell>

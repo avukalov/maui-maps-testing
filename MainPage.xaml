@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:GoogleMaps.Control"
+             x:Class="GoogleMaps.MainPage">
+
+    <Grid>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Hello World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App UI"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="ClickMeBtn"
+                Text="Click me!"
+                Clicked="SimpleBottomSheetButton_Clicked"
+                SemanticProperties.Hint="Click me"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+        <!-- Simple Bottom Sheet -->
+        <control:BottomSheet
+            x:Name="simpleBottomSheet"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5,1,100,50"
+            HeightRequest="0"
+            HeaderText="Simple Example">
+            <control:BottomSheet.BottomSheetContent>
+                <Label
+                    Text="Hello from Bottom Sheet. This is a simple implementation with no customization."
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center" />
+            </control:BottomSheet.BottomSheetContent>
+        </control:BottomSheet>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:location="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:GoogleMaps.ViewModel"
+             xmlns:control="clr-namespace:GoogleMaps.Control"
+             x:Class="GoogleMaps.View.MapPage"
+             x:DataType="viewmodel:MapViewModel">
+
+    <Grid>
+        <AbsoluteLayout>
+        <maps:Map 
+            x:Name="map"
+            MapType="Street"
+            IsShowingUser="True" 
+            ItemsSource="{Binding CustomPins}"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <maps:Map.ItemTemplate>
+                <DataTemplate x:DataType="control:CustomPin">
+                    <control:CustomPin 
+                        Location="{Binding Location}"
+                        Label="{Binding Label}"
+                        Type="{Binding Type}"
+                        ImageSource="pin.svg"
+                        />
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+        </maps:Map>
+        
+        <Button 
+            Text="Pin me"
+            Command="{Binding CreatePinCommand}"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5,0.98,100,50"/>
+        
+        
+
+        </AbsoluteLayout>
+
+    
+    </Grid>
+</ContentPage>
