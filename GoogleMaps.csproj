@@ -51,6 +51,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Service\**" />
+	  <Compile Remove="Service\**" />
+	  <EmbeddedResource Remove="Service\**" />
+	  <MauiCss Remove="Service\**" />
+	  <MauiXaml Remove="Service\**" />
+	  <None Remove="Service\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\close.svg" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\info.png" />
@@ -81,7 +90,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Resources\Localization\" />
-	  <Folder Include="Service\" />
 	</ItemGroup>
 
 </Project>
