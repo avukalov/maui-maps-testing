@@ -4,6 +4,8 @@ using GoogleMaps.View;
 using GoogleMaps.ViewModel;
 using Microsoft.Extensions.Logging;
 using GoogleMaps.Platforms;
+using The49.Maui.BottomSheet;
+using GoogleMaps.Control;
 
 namespace GoogleMaps;
 
@@ -12,11 +14,11 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		
+
 		builder
 			.UseMauiApp<App>()
-			.UseMauiMaps()
 			.UseMauiCommunityToolkit()
+			.UseMauiMaps()
 			.UseMauiCameraView();
 
 		builder
@@ -27,7 +29,9 @@ public static class MauiProgram
 		builder
 			.ConfigureMauiHandlers(handlers =>
 			{
-				handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, CustomMapHandler>();
+				#if ANDROID
+					handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, CustomMapHandler>();
+				#endif
 				
 			});
 

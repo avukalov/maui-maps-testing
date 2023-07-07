@@ -9,6 +9,6 @@ namespace GoogleMaps.Model.Enum
     public enum DisplayTheme
     {
         Light,
-        Dark
+        Dark,
     }
 }

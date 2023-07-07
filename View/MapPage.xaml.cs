@@ -59,4 +59,9 @@ public partial class MapPage : ContentPage
             map.Pins.Add(pin);
         }
     }
+
+    private void OnMarkerClicked(object sender, PinClickedEventArgs e)
+    {
+        e.HideInfoWindow = true;
+    }
 }

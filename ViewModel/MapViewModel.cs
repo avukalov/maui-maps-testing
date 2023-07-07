@@ -28,7 +28,8 @@ namespace GoogleMaps.ViewModel
                 Label = "Me",
                 Location = location,
                 Type = PinType.Place,
-                ImageSource = ImageSource.FromUri(new Uri("https://www.gamesatlas.com/images/football/teams/ukraine/dynamo-kyiv.png"))
+                ImageSource = ImageSource.FromFile("pin.png")
+
             };
 
             CustomPins.Add(pin);

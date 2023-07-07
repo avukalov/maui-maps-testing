@@ -3,8 +3,106 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:control="clr-namespace:GoogleMaps.Control"
              x:Class="GoogleMaps.MainPage">
+    <ContentPage.Resources>
+        <DataTemplate x:Name="BottomSheetTemplate" x:Key="BottomSheetTemplate">
+            <ScrollView>
+                <VerticalStackLayout
+					Spacing="25"
+					Padding="30,0"
+					VerticalOptions="Center">
 
-    <Grid>
+                    <Image Source="dotnet_bot.png"
+					       WidthRequest="200"
+					       HeightRequest="200"/>
+
+                    <Label
+						Text="Welcome to .NET Multi-platform App UI"
+						SemanticProperties.HeadingLevel="Level1"
+						SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+						FontSize="18"
+						HorizontalOptions="Center" />
+
+                    <Label
+						Text="{Binding Count, StringFormat='Current count: {0}'}"
+						SemanticProperties.Hint="Counts the number of times you click"
+						FontSize="18"
+						HorizontalOptions="Center" />
+
+                    <Button Text="Increment count"
+					        SemanticProperties.Hint="Increments the number of times you click"
+					        Clicked="OnCounterClicked"/>
+
+                    <Button Text="Close"
+					        SemanticProperties.Hint="Closes the bottom sheet"
+					        Clicked="OnCloseClicked"/>
+                </VerticalStackLayout>
+            </ScrollView>
+        </DataTemplate>
+
+        <DataTemplate x:Name="BottomSheetTemplateWithLongContent" x:Key="BottomSheetTemplateWithLongContent">
+            <ScrollView>
+                <VerticalStackLayout
+					Spacing="25"
+					Padding="30,0"
+					VerticalOptions="Center">
+
+                    <Image Source="dotnet_bot.png"
+					       WidthRequest="200"
+					       HeightRequest="200"/>
+
+                    <Image Source="dotnet_bot.png"
+					       WidthRequest="200"
+					       HeightRequest="200"/>
+
+                    <Image Source="dotnet_bot.png"
+					       WidthRequest="200"
+					       HeightRequest="200"/>
+
+                    <Image Source="dotnet_bot.png"
+					       WidthRequest="200"
+					       HeightRequest="200"/>
+
+                    <Label
+						Text="Welcome to .NET Multi-platform App UI"
+						SemanticProperties.HeadingLevel="Level1"
+						SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+						FontSize="18"
+						HorizontalOptions="Center" />
+
+                    <Label
+						Text="{Binding Count, StringFormat='Current count: {0}'}"
+						SemanticProperties.Hint="Counts the number of times you click"
+						FontSize="18"
+						HorizontalOptions="Center" />
+
+                    <Button Text="Increment count"
+					        SemanticProperties.Hint="Increments the number of times you click"
+					        Clicked="OnCounterClicked"/>
+
+                    <Button Text="Close"
+					        SemanticProperties.Hint="Closes the bottom sheet"
+					        Clicked="OnCloseClicked"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Spacing="10" Padding="10" VerticalOptions="Center">
+        <Button
+			Text="Open bottom sheet"
+			SemanticProperties.Hint="Opens bottom sheet"
+			Clicked="ShowBottomSheet"
+			VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+        <Button
+			Text="Open bottom sheet with long content"
+			SemanticProperties.Hint="Opens bottom sheet"
+			Clicked="ShowBottomSheetWithLongContent"
+			VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+    <!--<Grid>
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
@@ -32,17 +130,15 @@
             <Button
                 x:Name="ClickMeBtn"
                 Text="Click me!"
-                Clicked="SimpleBottomSheetButton_Clicked"
+                Clicked="ClickMeBtn_Clicked"
                 SemanticProperties.Hint="Click me"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
-        <!-- Simple Bottom Sheet -->
+        
+        --><!-- Simple Bottom Sheet --><!--
         <control:BottomSheet
             x:Name="simpleBottomSheet"
-            AbsoluteLayout.LayoutFlags="PositionProportional"
-            AbsoluteLayout.LayoutBounds="0.5,1,100,50"
-            HeightRequest="0"
             HeaderText="Simple Example">
             <control:BottomSheet.BottomSheetContent>
                 <Label
@@ -52,6 +148,6 @@
                     HorizontalTextAlignment="Center" />
             </control:BottomSheet.BottomSheetContent>
         </control:BottomSheet>
-    </Grid>
+    </Grid>-->
 
 </ContentPage>

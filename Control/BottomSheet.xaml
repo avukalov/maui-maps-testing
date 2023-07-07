@@ -2,10 +2,11 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GoogleMaps.Control.BottomSheet"
+             x:Name="BottomSheetControlRoot"
              InputTransparent="True"
              VerticalOptions="Fill"
-             x:Name="BottomSheetControlRoot"
              HorizontalOptions="Fill">
+
     <ContentView.Resources>
         <!-- Grid Styles -->
         <Style TargetType="Grid">
@@ -18,24 +19,25 @@
             <Setter Property="BackgroundColor" Value="Transparent" />
         </Style>
     </ContentView.Resources>
-
+    
+    
+    
     <ContentView.Content>
+
         <Grid
             x:Name="BackgroundFader"
             BackgroundColor="#DDCCCCCC"
             IsVisible="false"
-            Opacity="0"
-            IgnoreSafeArea="True">
+            Opacity="0">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition x:Name="BottomSheetRowDefinition" Height="{Binding Source={x:Reference BottomSheetControlRoot}, Path=SheetHeight, Mode=OneWay}" />
+                <RowDefinition Height="{Binding Source={x:Reference BottomSheetControlRoot}, Path=SheetHeight, Mode=OneWay}" />
             </Grid.RowDefinitions>
 
             <!-- Close Button -->
             <Image
                 x:Name="CloseBottomSheetButton"
-                Source="close.png"
                 Grid.Row="0"
                 HeightRequest="40"
                 WidthRequest="40"
@@ -46,7 +48,7 @@
                 Margin="0,0,0,16">
 
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="CloseBottomSheetButton_Tapped" />
+                    <SwipeGestureRecognizer Direction="Down" Swiped="CloseBottomSheetButton_Tapped" />
                 </Image.GestureRecognizers>
 
             </Image>
@@ -88,7 +90,8 @@
                 </Grid>
 
             </Border>
-
         </Grid>
+
     </ContentView.Content>
+    
 </ContentView>

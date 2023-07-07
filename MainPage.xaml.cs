@@ -1,17 +1,69 @@
-﻿using GoogleMaps.View;
+﻿
+#if ANDROID
 
-namespace GoogleMaps;
+using BottomSheetView = Google.Android.Material.BottomSheet.BottomSheetDialog;
 
-public partial class MainPage : ContentPage
+#endif
+
+namespace GoogleMaps
 {
-	public MainPage()
-	{
-		InitializeComponent();
+    public partial class MainPage : ContentPage
+    {
+        BottomSheetView? bottomSheet;
+        public int Count { get; set; }
 
-		BindingContext = this;
-	}
+        public MainPage()
+        {
+            InitializeComponent();
+            BindingContext = this;
 
-    async void SimpleBottomSheetButton_Clicked(System.Object sender, System.EventArgs e) =>
-        await simpleBottomSheet.OpenBottomSheet();
+        }
+
+        private void OnCounterClicked(object sender, EventArgs e)
+        {
+            Count++;
+            OnPropertyChanged(nameof(Count));
+        }
+
+        private void ShowBottomSheet(object sender, EventArgs e)
+        {
+            bottomSheet = this.ShowBottomSheet(GetBottomSheetView(), true);
+        }
+
+        private Microsoft.Maui.Controls.View GetBottomSheetView()
+        {
+            var view = (Microsoft.Maui.Controls.View)BottomSheetTemplate.CreateContent();
+            view.BindingContext = BindingContext;
+            return view;
+        }
+
+        private void ShowBottomSheetWithLongContent(object sender, EventArgs e)
+        {
+            bottomSheet = this.ShowBottomSheet(GetBottomSheetViewWithLongContent(), false);
+        }
+
+        private Microsoft.Maui.Controls.View GetBottomSheetViewWithLongContent()
+        {
+            var view = (Microsoft.Maui.Controls.View)BottomSheetTemplateWithLongContent.CreateContent();
+            view.BindingContext = BindingContext;
+            view.MaximumHeightRequest = 300;
+            return view;
+        }
+
+        private void OnCloseClicked(object? sender, EventArgs e)
+        {
+            bottomSheet?.CloseBottomSheet();
+        }
+
+
+        //  private async void ClickMeBtn_Clicked(object sender, EventArgs e)
+        //  {
+        //await simpleBottomSheet.OpenBottomSheet();
+        //  }
+
+    }
 }
+
+
+
 

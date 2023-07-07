@@ -101,7 +101,7 @@ public partial class BottomSheet : ContentView
         UpdateTheme();
 
         //Set Close Icon from Local Resource
-        //CloseBottomSheetButton.Source = ImageSource.FromResource($"close.png");
+        CloseBottomSheetButton.Source = ImageSource.FromFile("close.png");
     }
 
     public async Task OpenBottomSheet()

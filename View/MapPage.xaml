@@ -14,19 +14,21 @@
         <maps:Map 
             x:Name="map"
             MapType="Street"
-            IsShowingUser="True" 
+            IsEnabled="False"
+            IsTrafficEnabled="False"
+            IsShowingUser="True"
             ItemsSource="{Binding CustomPins}"
             AbsoluteLayout.LayoutFlags="All"
             AbsoluteLayout.LayoutBounds="0,0,1,1">
             <maps:Map.ItemTemplate>
                 <DataTemplate x:DataType="control:CustomPin">
                     <control:CustomPin 
+                        MarkerClicked="OnMarkerClicked"
                         Location="{Binding Location}"
                         Label="{Binding Label}"
                         Type="{Binding Type}"
-                        ImageSource="pin.svg"
-                        />
-                </DataTemplate>
+                        ImageSource="{Binding ImageSource}" />
+                    </DataTemplate>
             </maps:Map.ItemTemplate>
         </maps:Map>
         
